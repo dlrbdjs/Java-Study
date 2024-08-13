@@ -7,6 +7,7 @@ public class Baseball {
     }
 
     public static void startGame() {
+
         int continueGame = 1;
         int[] randomNumList = getRandomList();
 
@@ -14,7 +15,6 @@ public class Baseball {
 
         while(continueGame == 1) {
 
-            int[] randomNumList = getRandomList();
             int[] userInputList = getUserInputList();
             int[] strikeBallCnt = getStrikeBallCnt(randomNumList, userInputList);
 
@@ -34,8 +34,10 @@ public class Baseball {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
                 continueGame = sc.nextInt();
+                if(continueGame == 1){
+                    randomNumList = getRandomList();
+                }
             }
-            System.out.println();
         }
         System.out.println("게임종료");
     }
