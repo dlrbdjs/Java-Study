@@ -3,12 +3,15 @@ import java.util.Random;
 
 public class Baseball {
     public static void main(String[] args) {
-//        ArrayList<Integer> numList = new ArrayList<>();
         startGame();
     }
 
     public static void startGame() {
         int continueGame = 1;
+        int[] randomNumList = getRandomList();
+
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         while(continueGame == 1) {
 
             int[] randomNumList = getRandomList();
@@ -72,8 +75,7 @@ public class Baseball {
         int[] userInputList = new int[3];
         Scanner sc = new Scanner(System.in);
 
-        System.out.println();
-        System.out.print("숫자를 입력 : ");
+        System.out.print("숫자를 입력해주세요: ");
 
         String userInput = sc.nextLine();
 
