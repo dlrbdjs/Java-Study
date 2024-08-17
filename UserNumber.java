@@ -8,7 +8,7 @@ public class UserNumber {
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Game.maxNumListLength; i++) {
             userNumList[i] = Character.getNumericValue(userInput.charAt(i));
         }
 
