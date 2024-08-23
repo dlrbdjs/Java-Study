@@ -4,7 +4,7 @@ public class RandomNumber {
 
     public int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(9) + 1;
+        return random.nextInt(ConstVariable.randomNumBound) + 1;
     }
 
     public int[] getDifferentNumberList(int[] NumList) {

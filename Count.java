@@ -1,20 +1,23 @@
 public class Count {
-    public int[] getStrikeBallCnt(int[] randomList, int[] userList) {
-        int[] strikeBallCnt = new int[Game.strikeBallListLength];
 
-        for (int i = 0; i < Game.maxNumListLength; i++) {
-            for (int j = 0; j < Game.maxNumListLength; j++) {
+    int strikeCnt;
+    int ballCnt;
+
+    public void getStrikeBallCnt(int[] randomList, int[] userList) {
+        strikeCnt = 0;
+        ballCnt = 0;
+        for (int i = 0; i < ConstVariable.maxNumListLength; i++) {
+            for (int j = 0; j < ConstVariable.maxNumListLength; j++) {
                 if(randomList[i] == userList[j]){
                     if (i == j){
-                        strikeBallCnt[0]++;
+                        strikeCnt++;
                     }
                     else {
-                        strikeBallCnt[1]++;
+                        ballCnt++;
                     }
                     break;
                 }
             }
         }
-        return strikeBallCnt;
     }
 }
