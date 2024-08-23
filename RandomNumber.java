@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class RandomNumber {
 
+    int[] randomNumList = new int[ConstVariable.maxNumListLength];
+
     public int getRandomNumber() {
         Random random = new Random();
         return random.nextInt(ConstVariable.randomNumBound) + 1;
@@ -10,6 +12,7 @@ public class RandomNumber {
     public int[] getDifferentNumberList(int[] NumList) {
         int passCnt = 0;
         int randomNum = getRandomNumber();
+
         for (int i = 0; i < 3; i++) {
             while(passCnt < i){
                 if (NumList[passCnt] == randomNum){
@@ -26,9 +29,9 @@ public class RandomNumber {
         return NumList;
     }
 
-    public int[] getRandomNumberList() {
-        int[] randomNumList = new int[3];
+    public void getRandomNumberList() {
+        Print print = new Print();
         randomNumList = getDifferentNumberList(randomNumList);
-        return randomNumList;
+        print.printAnswer(randomNumList);
     }
 }

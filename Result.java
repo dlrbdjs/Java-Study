@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class Result {
+
     int continueGame = 0;
     String gameStatus = "";
 
     public void gameResult(int strikeCnt, int ballCnt) {
-        Game game = new Game();
         Scanner sc = new Scanner(System.in);
 
         if (strikeCnt == 0 && ballCnt == 0) {
@@ -30,11 +30,14 @@ public class Result {
 
             if(continueGame == 1){
                 gameStatus = "gameStatusContinue";
-                game.randomNumList = game.randomNumber.getRandomNumberList(); //여기도
             }
             if(continueGame == 2){
                 gameStatus = "gameStatusStop";
             }
         }
+    }
+
+    public void initGameStatus(){
+        gameStatus = "";
     }
 }
