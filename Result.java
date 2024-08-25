@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Result {
 
     private final Count count;
@@ -11,7 +9,7 @@ public class Result {
     String gameStatus = "";
 
     public void gameResult() {
-        Scanner sc = new Scanner(System.in);
+        UserInput userInput = new UserInput();
 
         if (count.strikeCnt == 0 && count.ballCnt == 0) {
             System.out.println("낫싱");
@@ -30,7 +28,7 @@ public class Result {
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-            continueGame = sc.nextInt();
+            continueGame = userInput.inputUserNum();
 
             if(continueGame == 1){
                 gameStatus = "continue";

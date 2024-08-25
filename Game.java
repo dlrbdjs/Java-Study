@@ -1,21 +1,21 @@
 public class Game {
 
-    RandomNumber randomNumber = new RandomNumber();
-    UserNumber userNumber = new UserNumber();
-    Count count = new Count(this.randomNumber, this.userNumber);
+    Numbers numbers = new Numbers();
+    UserInput userInput = new UserInput(this.numbers);
+    RandomNumber randomNumber = new RandomNumber(this.numbers);
+    Count count = new Count(this.numbers);
     Result result = new Result(this.count);
 
     public void playGame() {
-
-        randomNumber.getRandomNumberList();
+        randomNumber.getRandomNums();
         System.out.print("숫자 야구 게임을 시작합니다.");
 
         while(!(result.gameStatus.equals("stop"))) {
             if((result.gameStatus.equals("continue"))){
-                randomNumber.getRandomNumberList();
+                randomNumber.getRandomNums();
                 result.initGameStatus();
             }
-            userNumber.getUserNumList();
+            userInput.inputUserNums();
             count.getStrikeBallCnt();
             result.gameResult();
         }

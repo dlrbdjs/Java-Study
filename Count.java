@@ -1,10 +1,8 @@
 public class Count {
 
-    private final RandomNumber randomNumber;
-    private final UserNumber userNumber;
-    Count(RandomNumber randomNumber, UserNumber userNumber) {
-        this.randomNumber = randomNumber;
-        this.userNumber = userNumber;
+    private final Numbers numbers;
+    Count(Numbers numbers) {
+        this.numbers = numbers;
     }
 
     int strikeCnt;
@@ -15,7 +13,7 @@ public class Count {
         ballCnt = 0;
         for (int i = 0; i < ConstVariable.maxNumListLength; i++) {
             for (int j = 0; j < ConstVariable.maxNumListLength; j++) {
-                if(randomNumber.randomNumList[i] == userNumber.userNumList[j]){
+                if(numbers.randomNums[i] == numbers.userNums[j]){
                     if (i == j){
                         strikeCnt++;
                     }

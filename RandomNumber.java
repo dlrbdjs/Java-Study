@@ -1,8 +1,11 @@
 import java.util.Random;
 
 public class RandomNumber {
+    private final Numbers numbers;
 
-    int[] randomNumList = new int[ConstVariable.maxNumListLength];
+    RandomNumber(Numbers numbers) {
+        this.numbers = numbers;
+    }
 
     public int getRandomNumber() {
         Random random = new Random();
@@ -29,9 +32,9 @@ public class RandomNumber {
         return NumList;
     }
 
-    public void getRandomNumberList() {
+    public void getRandomNums() {
         Print print = new Print();
-        randomNumList = getDifferentNumberList(randomNumList);
-        print.printAnswer(randomNumList);
+        numbers.randomNums = getDifferentNumberList(numbers.randomNums);
+        print.printAnswer(numbers.randomNums);
     }
 }
