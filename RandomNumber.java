@@ -1,15 +1,21 @@
 import java.util.Random;
 
 public class RandomNumber {
+    private final Numbers numbers;
+
+    RandomNumber(Numbers numbers) {
+        this.numbers = numbers;
+    }
 
     public int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(9) + 1;
+        return random.nextInt(ConstVariable.randomNumBound) + 1;
     }
 
     public int[] getDifferentNumberList(int[] NumList) {
         int passCnt = 0;
         int randomNum = getRandomNumber();
+
         for (int i = 0; i < 3; i++) {
             while(passCnt < i){
                 if (NumList[passCnt] == randomNum){
@@ -26,9 +32,9 @@ public class RandomNumber {
         return NumList;
     }
 
-    public int[] getRandomNumberList() {
-        int[] randomNumList = new int[3];
-        randomNumList = getDifferentNumberList(randomNumList);
-        return randomNumList;
+    public void getRandomNums() {
+        Print print = new Print();
+        numbers.randomNums = getDifferentNumberList(numbers.randomNums);
+        print.printAnswer(numbers.randomNums);
     }
 }
