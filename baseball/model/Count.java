@@ -1,19 +1,18 @@
+package baseball.model;
+
+import baseball.common.util.ConstVariable;
+
 public class Count {
 
-    private final Numbers numbers;
-    Count(Numbers numbers) {
-        this.numbers = numbers;
-    }
+    public int strikeCnt;
+    public int ballCnt;
 
-    int strikeCnt;
-    int ballCnt;
-
-    public void getStrikeBallCnt() {
+    public void getStrikeBallCnt(int[] rand, int[] user) {
         strikeCnt = 0;
         ballCnt = 0;
         for (int i = 0; i < ConstVariable.maxNumListLength; i++) {
             for (int j = 0; j < ConstVariable.maxNumListLength; j++) {
-                if(numbers.randomNums[i] == numbers.userNums[j]){
+                if(rand[i] == user[j]){
                     if (i == j){
                         strikeCnt++;
                     }
