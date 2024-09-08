@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
+
 import baseball.view.Message;
 import baseball.common.util.ConstVariable;
 
@@ -15,9 +17,13 @@ public class UserInput {
 
     public int[] convertIntList(String str){
         int[] nums = new int[ConstVariable.maxNumListLength];
-        for (int i = 0; i < str.length(); i++) {
-            nums[i] = Character.getNumericValue(str.charAt(i));
-        }
+
+        IntStream.range(0, str.length())
+                .forEach(idx -> nums[idx] = Character.getNumericValue(str.charAt(idx)));
+
+//        for (int i = 0; i < str.length(); i++) {
+//            nums[i] = Character.getNumericValue(str.charAt(i));
+//        }
         return nums;
     }
 
