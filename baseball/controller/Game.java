@@ -12,7 +12,7 @@ public class Game {
 
     public void playGame() {
         numbers.getRandNums();
-        Message.START_GAME.println();
+        Message.START_GAME.print();
 
         while(!(result.status.gameStatus.equals("stop"))) {
             if((result.status.gameStatus.equals("continue"))){

@@ -26,8 +26,4 @@ public class Numbers {
         UserInput userInput = new UserInput();
         userNums = userInput.inputUserNums();
     }
-
-//    public void initUserNums(){
-//        Arrays.fill(userNums, 0);
-//    }
 }
