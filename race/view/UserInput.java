@@ -1,6 +1,4 @@
-package race.controller;
-
-import race.view.Message;
+package race.view;
 
 import java.util.Scanner;
 

@@ -1,6 +1,7 @@
 package race.controller;
 
 import race.model.Info;
+import race.view.UserInput;
 
 public class Game {
 
