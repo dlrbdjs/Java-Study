@@ -6,7 +6,8 @@ public enum Message {
     GAME_RESULT("실행 결과"),
     RACE_RESULT_COLON(" : "),
     RACE_RESULT_DASH("-"),
-    RACE_WINNER("최종 우승자 : ");
+    RACE_WINNER("최종 우승자 : "),
+    INPUT_ERROR("잘못된 입력 : 5자리 이하로 입력해주세요");
 
     private final String message;
 
@@ -31,6 +32,11 @@ public enum Message {
     public void println() {
         System.out.print(this.message);
         System.out.println();
+    }
+
+    @Override
+    public String toString() {
+        return message;
     }
 
 }

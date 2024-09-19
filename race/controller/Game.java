@@ -8,9 +8,10 @@ public class Game {
     UserInput userInput = new UserInput();
     Result result = new Result();
     Info info = new Info();
+    ValidationHandler validation = new ValidationHandler();
 
     public void playGame(){
-        info.setCarInfo(userInput.inputName());
+        info.setCarInfo(validation.validateName(userInput.inputName()));
         result.raceResult(info.carInfo, userInput.inputAttempts());
     }
 }
