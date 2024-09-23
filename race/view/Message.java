@@ -20,10 +20,10 @@ public enum Message {
     }
 
     public void print(String str, boolean enumFirst){
-        if(enumFirst){
+        if (enumFirst) {
             System.out.printf("%s", str);
             this.print();
-        }else{
+        } else {
             this.print();
             System.out.printf("%s", str);
         }
