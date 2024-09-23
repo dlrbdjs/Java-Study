@@ -21,12 +21,12 @@ public class Result {
             carInfo.forEach(this::printResult);
             System.out.println();
         }
-        this.raceWinner(carInfo);
+        raceWinner(carInfo);
     }
 
     public void printResult(Car car){
         Message.RACE_RESULT_COLON.print(car.getName(), true);
-        this.printDash(car);
+        printDash(car);
     }
 
     public void printDash(Car car){
@@ -41,7 +41,6 @@ public class Result {
                 .filter(car -> isMaxDistance(car, carInfo))
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
-//                .forEach(System.out::print);
         Message.RACE_WINNER.print(winner, false);
     }
 
