@@ -6,8 +6,8 @@ public class Car {
         this.distance = distance;
     }
 
-    String name;
-    int distance;
+    private String name;
+    private int distance;
 
     public String getName() {
         return name;
@@ -20,10 +20,4 @@ public class Car {
     public void addDistance(){
        this.distance++;
     }
-
-//    @Override
-//    public String toString(){
-//        return "{name='" + name + "', distance=" + distance + "}";
-//
-//    }
 }
