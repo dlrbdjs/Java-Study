@@ -5,7 +5,7 @@ import java.util.List;
 
 import static race.common.util.ConstVariable.INIT_DISTANCE;
 
-public class Info {
+public class CarInfo {
 
     public List<Car> carInfo = new ArrayList<>();
 
