@@ -1,4 +1,4 @@
-package race.controller;
+package race.common.util;
 
 import race.view.Message;
 

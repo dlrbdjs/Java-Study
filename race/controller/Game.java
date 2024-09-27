@@ -1,5 +1,6 @@
 package race.controller;
 
+import race.common.util.ValidationHandler;
 import race.model.CarInfo;
 import race.view.UserInput;
 
