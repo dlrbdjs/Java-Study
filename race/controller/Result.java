@@ -1,6 +1,6 @@
 package race.controller;
 
-import race.model.Number;
+import race.common.util.Condition;
 import race.model.Car;
 import race.view.Message;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Result {
-    Number number = new Number();
+    Condition condition = new Condition();
 
     public void raceResult(List<Car> carInfo, int attempts){
         System.out.println();
@@ -16,7 +16,7 @@ public class Result {
 
         for (int i = 0; i < attempts; i++) {
             carInfo.stream()
-                    .filter(car -> number.isPossibleToMove())
+                    .filter(car -> condition.isPossibleToMove())
                     .forEach(Car::addDistance);
             carInfo.forEach(this::printResult);
             System.out.println();
@@ -31,7 +31,7 @@ public class Result {
 
     public void raceWinner(List<Car> carInfo){
         String winner = carInfo.stream()
-                .filter(car -> isMaxDistance(car, carInfo))
+                .filter(car -> condition.isMaxDistance(car, carInfo))
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
         Message.RACE_WINNER.print(winner, false);
@@ -42,9 +42,5 @@ public class Result {
                 .map(Car::getDistance)
                 .max(Integer::compare)
                 .orElseThrow();
-    }
-
-    public boolean isMaxDistance(Car car, List<Car> carInfo){
-        return car.getDistance() == getMaxDistance(carInfo);
     }
 }
