@@ -7,7 +7,7 @@ public enum Message {
     RACE_RESULT_COLON(" : "),
     RACE_RESULT_DASH("-"),
     RACE_WINNER("최종 우승자 : "),
-    INPUT_ERROR("잘못된 입력 : 5자리 이하로 입력해주세요");
+    INPUT_ERROR(" / 잘못된 입력 : 5자리 이하로 입력해주세요");
 
     private final String message;
 
