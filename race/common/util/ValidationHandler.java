@@ -11,9 +11,11 @@ public class ValidationHandler {
         Arrays.stream(names)
                 .filter(name -> name.length() > MAX_NAME_LENGTH)
                 .findAny()
-                .ifPresent(name -> {
-                    throw new IllegalArgumentException(name + Message.INPUT_ERROR);
-                });
+                .ifPresent(this::throwArgException);
         return names;
+    }
+
+    public void throwArgException(String str){
+        throw new IllegalArgumentException(str + Message.INPUT_ERROR);
     }
 }
