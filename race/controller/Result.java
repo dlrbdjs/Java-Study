@@ -26,14 +26,7 @@ public class Result {
 
     public void printResult(Car car){
         Message.RACE_RESULT_COLON.print(car.getName(), true);
-        printDash(car);
-    }
-
-    public void printDash(Car car){
-        for (int i = 0; i < car.getDistance(); i++) {
-            Message.RACE_RESULT_DASH.print();
-        }
-        System.out.println();
+        car.printDash();
     }
 
     public void raceWinner(List<Car> carInfo){
