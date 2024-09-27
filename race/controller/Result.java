@@ -7,6 +7,8 @@ import race.view.Message;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static race.common.util.ConstVariable.COMMA;
+
 public class Result {
     Condition condition = new Condition();
 
@@ -33,7 +35,7 @@ public class Result {
         String winner = carInfo.stream()
                 .filter(car -> condition.isMaxDistance(car, carInfo))
                 .map(Car::getName)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(COMMA));
         Message.RACE_WINNER.print(winner, false);
     }
 
