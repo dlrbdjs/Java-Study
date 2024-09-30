@@ -5,7 +5,6 @@ import race.model.Car;
 import race.model.Cars;
 import race.view.Message;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static race.common.util.ConstVariable.COMMA;

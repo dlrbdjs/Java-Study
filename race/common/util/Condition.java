@@ -4,8 +4,6 @@ import race.model.Car;
 import race.controller.Result;
 import race.model.Cars;
 
-import java.util.List;
-
 import static race.common.util.ConstVariable.MOVE_CONDITION_VALUE;
 
 public class Condition {
