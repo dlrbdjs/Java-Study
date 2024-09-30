@@ -12,18 +12,18 @@ import static race.common.util.ConstVariable.COMMA;
 public class Result {
     Condition condition = new Condition();
 
-    public void raceResult(List<Car> carInfo, int attempts){
+    public void raceResult(List<Car> cars, int attempts){
         System.out.println();
         Message.GAME_RESULT.println();
 
         for (int i = 0; i < attempts; i++) {
-            carInfo.stream()
+            cars.stream()
                     .filter(car -> condition.isPossibleToMove())
                     .forEach(Car::addDistance);
-            carInfo.forEach(this::printResult);
+            cars.forEach(this::printResult);
             System.out.println();
         }
-        raceWinner(carInfo);
+        raceWinner(cars);
     }
 
     public void printResult(Car car){
@@ -31,16 +31,16 @@ public class Result {
         car.printDash();
     }
 
-    public void raceWinner(List<Car> carInfo){
-        String winner = carInfo.stream()
-                .filter(car -> condition.isMaxDistance(car, carInfo))
+    public void raceWinner(List<Car> cars){
+        String winner = cars.stream()
+                .filter(car -> condition.isMaxDistance(car, cars))
                 .map(Car::getName)
                 .collect(Collectors.joining(COMMA));
         Message.RACE_WINNER.print(winner, false);
     }
 
-    public int getMaxDistance(List<Car> carInfo){
-        return carInfo.stream()
+    public int getMaxDistance(List<Car> cars){
+        return cars.stream()
                 .map(Car::getDistance)
                 .max(Integer::compare)
                 .orElseThrow();

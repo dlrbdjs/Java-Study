@@ -11,19 +11,19 @@ public class Game {
 
     UserInput userInput = new UserInput();
     Result result = new Result();
-    Cars cars = new Cars(setCarInfo(userInput.inputName()));
+    Cars cars = new Cars(setCars(userInput.inputName()));
 
     public void playGame(){
-        result.raceResult(cars.getCarInfo(), userInput.inputAttempts());
+        result.raceResult(cars.getCars(), userInput.inputAttempts());
     }
 
     //CarInfo 생성을 위한..
-    public List<Car> setCarInfo(String[] carNames) {
-        List<Car> carInfo = new ArrayList<>();
+    public List<Car> setCars(String[] carNames) {
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames){
-            carInfo.add(new Car(carName));
+            cars.add(new Car(carName));
         }
-        return carInfo;
+        return cars;
     }
 
 }

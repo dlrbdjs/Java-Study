@@ -13,8 +13,8 @@ public class Condition {
         return random.randNum() >= MOVE_CONDITION_VALUE;
     }
 
-    public boolean isMaxDistance(Car car, List<Car> carInfo){
+    public boolean isMaxDistance(Car car, List<Car> cars){
         Result result = new Result();
-        return car.getDistance() == result.getMaxDistance(carInfo);
+        return car.getDistance() == result.getMaxDistance(cars);
     }
 }
