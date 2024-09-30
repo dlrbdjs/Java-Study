@@ -2,6 +2,7 @@ package race.common.util;
 
 import race.model.Car;
 import race.controller.Result;
+import race.model.Cars;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Condition {
         return random.randNum() >= MOVE_CONDITION_VALUE;
     }
 
-    public boolean isMaxDistance(Car car, List<Car> cars){
+    public boolean isMaxDistance(Car car, Cars cars){
         Result result = new Result();
         return car.getDistance() == result.getMaxDistance(cars);
     }

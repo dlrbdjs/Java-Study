@@ -14,7 +14,7 @@ public class Game {
     Cars cars = new Cars(setCars(userInput.inputName()));
 
     public void playGame(){
-        result.raceResult(cars.getCars(), userInput.inputAttempts());
+        result.raceResult(cars, userInput.inputAttempts());
     }
 
     //CarInfo 생성을 위한..
