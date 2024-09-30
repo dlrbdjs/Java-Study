@@ -8,7 +8,9 @@ import static race.common.util.ConstVariable.MAX_NAME_LENGTH;
 
 public class Cars {
 
-    public CarInfo(List<Car> carInfo){
+    private final List<Car> carInfo;
+
+    public Cars(List<Car> carInfo){
         validateName(carInfo);
         this.carInfo = carInfo;
     }

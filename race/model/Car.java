@@ -5,13 +5,14 @@ import race.view.Message;
 import java.util.stream.IntStream;
 
 public class Car {
-    Car(String name, int distance){
+
+    private final String name;
+    private int distance;
+
+    public Car(String name, int distance){
         this.name = name;
         this.distance = distance;
     }
-
-    private String name;
-    private int distance;
 
     public String getName() {
         return name;
