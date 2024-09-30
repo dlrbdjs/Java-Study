@@ -1,7 +1,7 @@
 package race.controller;
 
 import race.model.Car;
-import race.model.CarInfo;
+import race.model.Cars;
 import race.view.UserInput;
 
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ public class Game {
 
     UserInput userInput = new UserInput();
     Result result = new Result();
-    CarInfo carInfo = new CarInfo(setCarInfo(userInput.inputName()));
+    Cars cars = new Cars(setCarInfo(userInput.inputName()));
 
     public void playGame(){
-        result.raceResult(carInfo.getCarInfo(), userInput.inputAttempts());
+        result.raceResult(cars.getCarInfo(), userInput.inputAttempts());
     }
 
     //CarInfo 생성을 위한..
