@@ -7,8 +7,6 @@ import race.view.UserInput;
 import java.util.ArrayList;
 import java.util.List;
 
-import static race.common.util.ConstVariable.INIT_DISTANCE;
-
 public class Game {
 
     UserInput userInput = new UserInput();
@@ -23,7 +21,7 @@ public class Game {
     public List<Car> setCarInfo(String[] carNames) {
         List<Car> carInfo = new ArrayList<>();
         for (String carName : carNames){
-            carInfo.add(new Car(carName, INIT_DISTANCE));
+            carInfo.add(new Car(carName));
         }
         return carInfo;
     }
