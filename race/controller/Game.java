@@ -11,14 +11,14 @@ public class Game {
 
     UserInput userInput = new UserInput();
     Result result = new Result();
-    Cars cars = new Cars(setCars(userInput.inputName()));
+    Cars cars = new Cars(makeCars(userInput.inputName()));
 
     public void playGame(){
         result.raceResult(cars, userInput.inputAttempts());
     }
 
     //CarInfo 생성을 위한..
-    public List<Car> setCars(String[] carNames) {
+    public List<Car> makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames){
             cars.add(new Car(carName));
