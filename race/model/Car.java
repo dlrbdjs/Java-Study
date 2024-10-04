@@ -1,9 +1,6 @@
 package race.model;
 
 import race.common.util.Condition;
-import race.view.Message;
-
-import java.util.stream.IntStream;
 
 import static race.common.util.ConstVariable.INIT_DISTANCE;
 

@@ -3,7 +3,6 @@ package race.model;
 import race.common.util.Condition;
 import race.view.Message;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
