@@ -42,10 +42,4 @@ public class Car {
         Condition condition = new Condition();
         this.moveCondition = condition.isBiggerThanFour();
     }
-
-    public void printDash(){//모델에서 뷰를 알면 안된다 리턴값해서 컨트롤러한테 리턴할 것
-        IntStream.range(0, this.distance)
-                .forEach(dist -> Message.RACE_RESULT_DASH.print());
-        System.out.println();
-    }
 }

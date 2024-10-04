@@ -1,16 +1,10 @@
 package race.controller;
 
-import race.common.util.Condition;
 import race.model.Car;
 import race.model.Cars;
 import race.view.Message;
 
-import java.util.stream.Collectors;
-
-import static race.common.util.ConstVariable.COMMA;
-
 public class Result {
-    Condition condition = new Condition();
 
     public void raceResult(Cars cars, int attempts){
         System.out.println();
@@ -26,14 +20,13 @@ public class Result {
 
     public void printResult(Car car){
         Message.RACE_RESULT_COLON.print(car.getName(), true);
-        car.printDash();
+        for (int i = 0; i < car.getDistance(); i++) {
+            Message.RACE_RESULT_DASH.print();
+        }
+        System.out.println();
     }
 
     public void raceWinner(Cars cars){
-        String winner = cars.getCars().stream()
-                .filter(car -> condition.isMaxDistance(car, cars))
-                .map(Car::getName)
-                .collect(Collectors.joining(COMMA));
-        Message.RACE_WINNER.print(winner, false);
+        Message.RACE_WINNER.print(cars.getWinnerName(), false);
     }
 }
