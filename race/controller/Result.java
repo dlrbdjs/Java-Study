@@ -36,11 +36,4 @@ public class Result {
                 .collect(Collectors.joining(COMMA));
         Message.RACE_WINNER.print(winner, false);
     }
-
-    public int getMaxDistance(Cars cars){
-        return cars.getCars().stream()
-                .map(Car::getDistance)
-                .max(Integer::compare)
-                .orElseThrow();
-    }
 }
