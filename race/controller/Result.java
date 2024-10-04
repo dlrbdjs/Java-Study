@@ -17,9 +17,7 @@ public class Result {
         Message.GAME_RESULT.println();
 
         for (int i = 0; i < attempts; i++) {
-            cars.getCars().stream()
-                    .filter(car -> condition.isPossibleToMove())
-                    .forEach(Car::addDistance);
+            cars.getCars().forEach(Car::carMove);
             cars.getCars().forEach(this::printResult);
             System.out.println();
         }
