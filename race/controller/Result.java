@@ -6,19 +6,19 @@ import race.view.Message;
 
 public class Result {
 
-    public void raceResult(Cars cars, int attempts){
+    public void race(Cars cars, int attempts){
         System.out.println();
         Message.GAME_RESULT.println();
 
         for (int i = 0; i < attempts; i++) {
             cars.getCars().forEach(Car::carMove);
-            cars.getCars().forEach(this::printResult);
+            cars.getCars().forEach(this::raceResult);
             System.out.println();
         }
         raceWinner(cars);
     }
 
-    public void printResult(Car car){
+    public void raceResult(Car car){
         Message.RACE_RESULT_COLON.print(car.getName(), true);
         for (int i = 0; i < car.getDistance(); i++) {
             Message.RACE_RESULT_DASH.print();
