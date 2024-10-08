@@ -11,7 +11,7 @@ public class Result {
         Message.GAME_RESULT.println();
 
         for (int i = 0; i < attempts; i++) {
-            cars.getCars().forEach(Car::carMove);
+            cars.allCarMove();
             cars.getCars().forEach(this::raceResult);
             System.out.println();
         }

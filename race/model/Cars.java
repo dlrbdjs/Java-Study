@@ -26,6 +26,12 @@ public class Cars {
         return cars;
     }
 
+    public void allCarMove(){
+        for(Car car : cars){
+            car.carMove();
+        }
+    }
+
     public int getMaxDistance(){
         return cars.stream()
                 .map(Car::getDistance)
