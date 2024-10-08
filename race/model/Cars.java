@@ -2,6 +2,7 @@ package race.model;
 
 import race.common.util.Condition;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,9 +14,12 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars){
+    public Cars(String[] carNames){
+        this.cars = new ArrayList<>();
+        for (String carName : carNames){
+            this.cars.add(new Car(carName));
+        }
         validateName(cars);
-        this.cars = cars;
     }
 
     public List<Car> getCars() {
