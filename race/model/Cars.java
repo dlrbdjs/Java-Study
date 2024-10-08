@@ -41,11 +41,9 @@ public class Cars {
     }
 
     public void validateName(List<Car> cars){
-        cars.stream()
-                .filter(car -> condition.isMoreThanFiveLetters(car.getName()))
-                .findAny()
-                .ifPresent( name -> {
-                    throw new IllegalArgumentException();
-                });
+        if(cars.stream()
+                .anyMatch(car -> condition.isMoreThanFiveLetters(car.getName()))){
+            throw new IllegalArgumentException();
+        }
     }
 }
