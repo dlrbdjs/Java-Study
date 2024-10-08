@@ -1,5 +1,6 @@
 package race.common.util;
 
+import static race.common.util.ConstVariable.MAX_NAME_LENGTH;
 import static race.common.util.ConstVariable.MOVE_CONDITION_VALUE_FOUR;
 
 public class Condition {
@@ -10,5 +11,9 @@ public class Condition {
 
     public boolean isSameNum(int carDist, int carsDist){
         return carDist == carsDist;
+    }
+
+    public boolean isMoreThanFiveLetters(String str){
+        return str.length() > MAX_NAME_LENGTH;
     }
 }

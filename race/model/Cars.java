@@ -1,15 +1,15 @@
 package race.model;
 
 import race.common.util.Condition;
-import race.view.Message;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static race.common.util.ConstVariable.COMMA;
-import static race.common.util.ConstVariable.MAX_NAME_LENGTH;
 
 public class Cars {
+
+    Condition condition = new Condition();
 
     private final List<Car> cars;
 
@@ -29,20 +29,19 @@ public class Cars {
                 .orElseThrow();
     }
 
-    public String getWinnerName(){
-        Condition condition = new Condition();
+    public String getWinnerName(){ // 굳이 모델에 부하를 준건지?
         return cars.stream()
                 .filter(car -> condition.isSameNum(car.getDistance(), getMaxDistance()))
                 .map(Car::getName)
                 .collect(Collectors.joining(COMMA));
     }
 
-    public void validateName(List<Car> cars){ // 이것도 사실 모델이 뷰를 알아버린거 같은데요?
+    public void validateName(List<Car> cars){
         cars.stream()
-                .filter(name -> name.getName().length() > MAX_NAME_LENGTH)
+                .filter(car -> condition.isMoreThanFiveLetters(car.getName()))
                 .findAny()
                 .ifPresent( name -> {
-                    throw new IllegalArgumentException(Message.INPUT_ERROR.toString());
+                    throw new IllegalArgumentException();
                 });
     }
 }
