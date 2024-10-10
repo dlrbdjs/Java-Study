@@ -11,15 +11,15 @@ public class Game {
     UserInput userInput = new UserInput();
     Result result = new Result();
 
-    public void playGame(){
-        try{
+    public void playGame() {
+        try {
             Cars cars = new Cars(userInput.inputName());
             result.race(cars, userInput.inputAttempts());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             Message.INPUT_ERROR_LENGTH.println();
-        }catch(FrontSpaceException e){
+        } catch (FrontSpaceException e) {
             Message.INPUT_ERROR_SPACE.println();
-        }catch(SameNameException e){
+        } catch (SameNameException e) {
             Message.INPUT_ERROR_SAME.println();
         }
     }

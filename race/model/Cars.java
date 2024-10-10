@@ -18,7 +18,7 @@ public class Cars {
 
     public Cars(String[] carNames) throws FrontSpaceException, SameNameException {
         this.cars = new ArrayList<>();
-        for (String carName : carNames){
+        for (String carName : carNames) {
             this.cars.add(new Car(carName));
         }
         validateName();
@@ -28,20 +28,20 @@ public class Cars {
         return cars;
     }
 
-    public void allCarMove(){
-        for(Car car : cars){
+    public void allCarMove() {
+        for (Car car : cars) {
             car.carMove();
         }
     }
 
-    public int getMaxDistance(){
+    public int getMaxDistance() {
         return cars.stream()
                 .map(Car::getDistance)
                 .max(Integer::compare)
                 .orElseThrow();
     }
 
-    public String getWinnerName(){ // 굳이 모델에 부하를 준건지?
+    public String getWinnerName() { // 굳이 모델에 부하를 준건지?
         return cars.stream()
                 .filter(car -> condition.isSameNum(car.getDistance(), getMaxDistance()))
                 .map(Car::getName)
@@ -49,15 +49,15 @@ public class Cars {
     }
 
     public void validateName() throws FrontSpaceException, SameNameException {
-        if(cars.stream()
-                .anyMatch(car -> condition.isMoreThanFiveLetters(car.getName()))){
+        if (cars.stream()
+                .anyMatch(car -> condition.isMoreThanFiveLetters(car.getName()))) {
             throw new IllegalArgumentException();
         }
-        if(cars.stream()
-                .anyMatch(car->condition.isFrontSpace(car.getName()))){
+        if (cars.stream()
+                .anyMatch(car -> condition.isFrontSpace(car.getName()))) {
             throw new FrontSpaceException();
         }
-        if(condition.isSameName(cars)){
+        if (condition.isSameName(cars)) {
             throw new SameNameException();
         }
     }

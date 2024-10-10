@@ -6,7 +6,7 @@ import race.view.Message;
 
 public class Result {
 
-    public void race(Cars cars, int attempts){
+    public void race(Cars cars, int attempts) {
         System.out.println();
         Message.GAME_RESULT.println();
 
@@ -18,7 +18,7 @@ public class Result {
         raceWinner(cars);
     }
 
-    public void raceResult(Car car){
+    public void raceResult(Car car) {
         Message.RACE_RESULT_COLON.print(car.getName(), true);
         for (int i = 0; i < car.getDistance(); i++) {
             Message.RACE_RESULT_DASH.print();
@@ -26,7 +26,7 @@ public class Result {
         System.out.println();
     }
 
-    public void raceWinner(Cars cars){
+    public void raceWinner(Cars cars) {
         Message.RACE_WINNER.print(cars.getWinnerName(), false);
     }
 }

@@ -22,7 +22,7 @@ public enum Message {
         System.out.print(this.message);
     }
 
-    public void print(String str, boolean enumFirst){
+    public void print(String str, boolean enumFirst) {
         if (enumFirst) {
             System.out.printf("%s", str);
             this.print();

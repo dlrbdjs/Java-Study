@@ -10,7 +10,7 @@ public class Car {
     private int distance;
     private boolean moveCondition;
 
-    public Car(String name){
+    public Car(String name) {
         this.name = name;
         this.distance = INIT_DISTANCE;
         this.moveCondition = false;
@@ -24,18 +24,18 @@ public class Car {
         return distance;
     }
 
-    public void carMove(){
+    public void carMove() {
         setMoveCondition();
         addDistance();
     }
 
-    public void addDistance(){
-       if (this.moveCondition){
-           this.distance++;
-       }
+    public void addDistance() {
+        if (this.moveCondition) {
+            this.distance++;
+        }
     }
 
-    public void setMoveCondition(){
+    public void setMoveCondition() {
         Condition condition = new Condition();
         this.moveCondition = condition.isBiggerThanFour();
     }
