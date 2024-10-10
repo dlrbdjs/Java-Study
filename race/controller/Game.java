@@ -1,31 +1,26 @@
 package race.controller;
 
-import race.model.Car;
-import race.model.CarInfo;
+import race.common.util.customexception.FrontSpaceException;
+import race.common.util.customexception.SameNameException;
+import race.model.Cars;
+import race.view.Message;
 import race.view.UserInput;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static race.common.util.ConstVariable.INIT_DISTANCE;
 
 public class Game {
 
     UserInput userInput = new UserInput();
     Result result = new Result();
-    CarInfo carInfo = new CarInfo(setCarInfo(userInput.inputName()));
 
-    public void playGame(){
-        result.raceResult(carInfo.getCarInfo(), userInput.inputAttempts());
-    }
-
-    //CarInfo 생성을 위한..
-    public List<Car> setCarInfo(String[] carNames) {
-        List<Car> carInfo = new ArrayList<>();
-        for (String carName : carNames){
-            carInfo.add(new Car(carName, INIT_DISTANCE));
+    public void playGame() {
+        try {
+            Cars cars = new Cars(userInput.inputName());
+            result.race(cars, userInput.inputAttempts());
+        } catch (IllegalArgumentException e) {
+            Message.INPUT_ERROR_LENGTH.println();
+        } catch (FrontSpaceException e) {
+            Message.INPUT_ERROR_SPACE.println();
+        } catch (SameNameException e) {
+            Message.INPUT_ERROR_SAME.println();
         }
-        return carInfo;
     }
-
 }

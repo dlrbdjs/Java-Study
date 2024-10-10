@@ -1,48 +1,32 @@
 package race.controller;
 
-import race.common.util.Condition;
 import race.model.Car;
+import race.model.Cars;
 import race.view.Message;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static race.common.util.ConstVariable.COMMA;
-
 public class Result {
-    Condition condition = new Condition();
 
-    public void raceResult(List<Car> carInfo, int attempts){
+    public void race(Cars cars, int attempts) {
         System.out.println();
         Message.GAME_RESULT.println();
 
         for (int i = 0; i < attempts; i++) {
-            carInfo.stream()
-                    .filter(car -> condition.isPossibleToMove())
-                    .forEach(Car::addDistance);
-            carInfo.forEach(this::printResult);
+            cars.allCarMove();
+            cars.getCars().forEach(this::raceResult);
             System.out.println();
         }
-        raceWinner(carInfo);
+        raceWinner(cars);
     }
 
-    public void printResult(Car car){
+    public void raceResult(Car car) {
         Message.RACE_RESULT_COLON.print(car.getName(), true);
-        car.printDash();
+        for (int i = 0; i < car.getDistance(); i++) {
+            Message.RACE_RESULT_DASH.print();
+        }
+        System.out.println();
     }
 
-    public void raceWinner(List<Car> carInfo){
-        String winner = carInfo.stream()
-                .filter(car -> condition.isMaxDistance(car, carInfo))
-                .map(Car::getName)
-                .collect(Collectors.joining(COMMA));
-        Message.RACE_WINNER.print(winner, false);
-    }
-
-    public int getMaxDistance(List<Car> carInfo){
-        return carInfo.stream()
-                .map(Car::getDistance)
-                .max(Integer::compare)
-                .orElseThrow();
+    public void raceWinner(Cars cars) {
+        Message.RACE_WINNER.print(cars.getWinnerName(), false);
     }
 }
