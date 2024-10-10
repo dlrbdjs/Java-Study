@@ -1,6 +1,8 @@
 package race.model;
 
 import race.common.util.Condition;
+import race.common.util.customexception.FrontSpaceException;
+import race.common.util.customexception.SameNameException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +16,12 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(String[] carNames){
+    public Cars(String[] carNames) throws FrontSpaceException, SameNameException {
         this.cars = new ArrayList<>();
         for (String carName : carNames){
             this.cars.add(new Car(carName));
         }
-        validateName(cars);
+        validateName();
     }
 
     public List<Car> getCars() {
@@ -46,10 +48,17 @@ public class Cars {
                 .collect(Collectors.joining(COMMA));
     }
 
-    public void validateName(List<Car> cars){
+    public void validateName() throws FrontSpaceException, SameNameException {
         if(cars.stream()
                 .anyMatch(car -> condition.isMoreThanFiveLetters(car.getName()))){
             throw new IllegalArgumentException();
+        }
+        if(cars.stream()
+                .anyMatch(car->condition.isFrontSpace(car.getName()))){
+            throw new FrontSpaceException();
+        }
+        if(condition.isSameName(cars)){
+            throw new SameNameException();
         }
     }
 }
