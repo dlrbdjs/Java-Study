@@ -11,4 +11,7 @@ public class ConstVariable {
     public static final String COMMA = ",";
     public static final String DISTANCE_HYPHEN = "-";
 
+    // Boolean Variable
+    public static final boolean ENUM_FRONT = true;
+    public static final boolean ENUM_BACK = false;
 }

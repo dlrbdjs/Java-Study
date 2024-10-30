@@ -17,8 +17,8 @@ public enum Message {
         System.out.print(this.message);
     }
 
-    public void print(String str, boolean enumFirst) {
-        if (enumFirst) {
+    public void print(String str, boolean enumFront) {
+        if (enumFront) {
             System.out.printf("%s", str);
             this.print();
         } else {
