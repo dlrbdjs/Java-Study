@@ -1,17 +1,20 @@
 package race.model;
 
-import race.view.Message;
+import race.common.util.Condition;
 
-import java.util.stream.IntStream;
+import static race.common.util.ConstVariable.INIT_DISTANCE;
 
 public class Car {
-    Car(String name, int distance){
-        this.name = name;
-        this.distance = distance;
-    }
 
-    private String name;
+    private final String name;
     private int distance;
+    private boolean moveCondition;
+
+    public Car(String name) {
+        this.name = name;
+        this.distance = INIT_DISTANCE;
+        this.moveCondition = false;
+    }
 
     public String getName() {
         return name;
@@ -21,13 +24,19 @@ public class Car {
         return distance;
     }
 
-    public void addDistance(){
-       this.distance++;
+    public void carMove() {
+        setMoveCondition();
+        addDistance();
     }
 
-    public void printDash(){
-        IntStream.range(0, this.distance)
-                .forEach(dist -> Message.RACE_RESULT_DASH.print());
-        System.out.println();
+    public void addDistance() {
+        if (this.moveCondition) {
+            this.distance++;
+        }
+    }
+
+    public void setMoveCondition() {
+        Condition condition = new Condition();
+        this.moveCondition = condition.isBiggerThanFour();
     }
 }
