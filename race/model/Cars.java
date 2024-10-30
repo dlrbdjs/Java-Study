@@ -41,7 +41,7 @@ public class Cars {
                 .orElseThrow();
     }
 
-    public String getWinnerName() { // 굳이 모델에 부하를 준건지?
+    public String getWinnerName() {
         return cars.stream()
                 .filter(car -> condition.isSameNum(car.getDistance(), getMaxDistance()))
                 .map(Car::getName)
@@ -57,8 +57,12 @@ public class Cars {
                 .anyMatch(car -> condition.isFrontSpace(car.getName()))) {
             throw new FrontSpaceException();
         }
-        if (condition.isSameName(cars)) {
+        if (isSameName(cars)) {
             throw new SameNameException();
         }
+    }
+
+    private boolean isSameName(List<Car> cars) {
+        return condition.isSameString(cars.stream().map(Car::getName).toList());
     }
 }

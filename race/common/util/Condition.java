@@ -1,7 +1,5 @@
 package race.common.util;
 
-import race.model.Car;
-
 import java.util.List;
 
 import static race.common.util.ConstVariable.MAX_NAME_LENGTH;
@@ -25,9 +23,8 @@ public class Condition {
         return str.charAt(0) == ' ';
     }
 
-    public boolean isSameName(List<Car> cars) {
+    public boolean isSameString(List<String> cars) {
         return cars.size() != cars.stream()
-                .map(Car::getName)
                 .distinct()
                 .count();
     }
