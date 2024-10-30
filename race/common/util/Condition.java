@@ -11,7 +11,7 @@ public class Condition {
         return random.randNum() >= MOVE_CONDITION_VALUE_FOUR;
     }
 
-    public boolean isSameNum(int carDist, int carsDist) {
+    public boolean isSameNumber(int carDist, int carsDist) {
         return carDist == carsDist;
     }
 

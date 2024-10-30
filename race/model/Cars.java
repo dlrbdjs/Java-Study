@@ -43,7 +43,7 @@ public class Cars {
 
     public String getWinnerName() {
         return cars.stream()
-                .filter(car -> condition.isSameNum(car.getDistance(), getMaxDistance()))
+                .filter(car -> condition.isSameNumber(car.getDistance(), getMaxDistance()))
                 .map(Car::getName)
                 .collect(Collectors.joining(COMMA));
     }
