@@ -34,14 +34,14 @@ public class Cars {
 
     public int getMaxDistance() {
         return cars.stream()
-                .map(Car::getDistance)
+                .map(car -> car.getDistance().length())
                 .max(Integer::compare)
                 .orElseThrow();
     }
 
     public String getWinnerName() {
         return cars.stream()
-                .filter(car -> Condition.isSameNumber(car.getDistance(), getMaxDistance()))
+                .filter(car -> Condition.isSameNumber(car.getDistance().length(), getMaxDistance()))
                 .map(Car::getName)
                 .collect(Collectors.joining(COMMA));
     }

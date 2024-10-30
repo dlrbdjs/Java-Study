@@ -20,10 +20,7 @@ public class Result {
 
     public void raceResult(Car car) {
         Message.RACE_RESULT_COLON.print(car.getName(), true);
-        for (int i = 0; i < car.getDistance(); i++) {
-            Message.RACE_RESULT_DASH.print();
-        }
-        System.out.println();
+        System.out.println(car.getDistance());
     }
 
     public void raceWinner(Cars cars) {

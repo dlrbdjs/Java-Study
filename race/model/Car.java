@@ -1,6 +1,7 @@
 package race.model;
 
 import race.common.util.Condition;
+import race.common.util.ConstVariable;
 
 import static race.common.util.ConstVariable.INIT_DISTANCE;
 
@@ -20,8 +21,8 @@ public class Car {
         return name;
     }
 
-    public int getDistance() {
-        return distance;
+    public String getDistance() {
+        return ConstVariable.DISTANCE_HYPHEN.repeat(distance);
     }
 
     public void carMove() {

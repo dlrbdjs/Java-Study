@@ -9,5 +9,6 @@ public class ConstVariable {
 
     // String Variable
     public static final String COMMA = ",";
+    public static final String DISTANCE_HYPHEN = "-";
 
 }
