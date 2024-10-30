@@ -2,13 +2,10 @@ package race.common.util;
 
 import java.util.List;
 
-import static race.common.util.ConstVariable.MAX_NAME_LENGTH;
-import static race.common.util.ConstVariable.MOVE_CONDITION_VALUE_FOUR;
-
 public class Condition {
     public static boolean isBiggerThanFour() {
         Random random = new Random();
-        return random.randNum() >= MOVE_CONDITION_VALUE_FOUR;
+        return random.randNum() >= ConstVariable.MOVE_CONDITION_VALUE_FOUR;
     }
 
     public static boolean isSameNumber(int carDist, int carsDist) {
@@ -16,7 +13,7 @@ public class Condition {
     }
 
     public static boolean isMoreThanFiveLetters(String str) {
-        return str.length() > MAX_NAME_LENGTH;
+        return str.length() > ConstVariable.MAX_NAME_LENGTH;
     }
 
     public static boolean isFrontSpace(String str) {

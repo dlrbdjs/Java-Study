@@ -3,8 +3,6 @@ package race.model;
 import race.common.util.Condition;
 import race.common.util.ConstVariable;
 
-import static race.common.util.ConstVariable.INIT_DISTANCE;
-
 public class Car {
 
     private final String name;
@@ -13,7 +11,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        this.distance = INIT_DISTANCE;
+        this.distance = ConstVariable.INIT_DISTANCE;
         this.moveCondition = false;
     }
 

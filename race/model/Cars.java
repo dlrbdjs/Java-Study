@@ -1,14 +1,13 @@
 package race.model;
 
 import race.common.util.Condition;
+import race.common.util.ConstVariable;
 import race.common.util.customexception.FrontSpaceException;
 import race.common.util.customexception.SameNameException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static race.common.util.ConstVariable.COMMA;
 
 public class Cars {
 
@@ -43,7 +42,7 @@ public class Cars {
         return cars.stream()
                 .filter(car -> Condition.isSameNumber(car.getDistance().length(), getMaxDistance()))
                 .map(Car::getName)
-                .collect(Collectors.joining(COMMA));
+                .collect(Collectors.joining(ConstVariable.COMMA));
     }
 
     public void validateName() throws FrontSpaceException, SameNameException {
