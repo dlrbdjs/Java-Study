@@ -8,6 +8,7 @@ import race.common.util.customexception.SameNameException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
 
 public class Cars {
 
@@ -35,7 +36,7 @@ public class Cars {
         return cars.stream()
                 .map(car -> car.getDistance().length())
                 .max(Integer::compare)
-                .orElseThrow();
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public String getWinnerName() {
