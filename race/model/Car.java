@@ -36,7 +36,6 @@ public class Car {
     }
 
     public void setMoveCondition() {
-        Condition condition = new Condition();
-        this.moveCondition = condition.isBiggerThanFour();
+        this.moveCondition = Condition.isBiggerThanFour();
     }
 }

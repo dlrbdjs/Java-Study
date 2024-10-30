@@ -12,8 +12,6 @@ import static race.common.util.ConstVariable.COMMA;
 
 public class Cars {
 
-    Condition condition = new Condition();
-
     private final List<Car> cars;
 
     public Cars(String[] carNames) throws FrontSpaceException, SameNameException {
@@ -43,18 +41,18 @@ public class Cars {
 
     public String getWinnerName() {
         return cars.stream()
-                .filter(car -> condition.isSameNumber(car.getDistance(), getMaxDistance()))
+                .filter(car -> Condition.isSameNumber(car.getDistance(), getMaxDistance()))
                 .map(Car::getName)
                 .collect(Collectors.joining(COMMA));
     }
 
     public void validateName() throws FrontSpaceException, SameNameException {
         if (cars.stream()
-                .anyMatch(car -> condition.isMoreThanFiveLetters(car.getName()))) {
+                .anyMatch(car -> Condition.isMoreThanFiveLetters(car.getName()))) {
             throw new IllegalArgumentException();
         }
         if (cars.stream()
-                .anyMatch(car -> condition.isFrontSpace(car.getName()))) {
+                .anyMatch(car -> Condition.isFrontSpace(car.getName()))) {
             throw new FrontSpaceException();
         }
         if (isSameName(cars)) {
@@ -63,6 +61,6 @@ public class Cars {
     }
 
     private boolean isSameName(List<Car> cars) {
-        return condition.isSameString(cars.stream().map(Car::getName).toList());
+        return Condition.isSameString(cars.stream().map(Car::getName).toList());
     }
 }
