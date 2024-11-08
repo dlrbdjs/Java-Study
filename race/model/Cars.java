@@ -1,18 +1,16 @@
 package race.model;
 
 import race.common.util.Condition;
+import race.common.util.ConstVariable;
 import race.common.util.customexception.FrontSpaceException;
 import race.common.util.customexception.SameNameException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static race.common.util.ConstVariable.COMMA;
+import java.util.NoSuchElementException;
 
 public class Cars {
-
-    Condition condition = new Condition();
 
     private final List<Car> cars;
 
@@ -36,29 +34,33 @@ public class Cars {
 
     public int getMaxDistance() {
         return cars.stream()
-                .map(Car::getDistance)
+                .map(car -> car.getDistance().length())
                 .max(Integer::compare)
-                .orElseThrow();
+                .orElseThrow(NoSuchElementException::new);
     }
 
-    public String getWinnerName() { // 굳이 모델에 부하를 준건지?
+    public String getWinnerName() {
         return cars.stream()
-                .filter(car -> condition.isSameNum(car.getDistance(), getMaxDistance()))
+                .filter(car -> Condition.isSameNumber(car.getDistance().length(), getMaxDistance()))
                 .map(Car::getName)
-                .collect(Collectors.joining(COMMA));
+                .collect(Collectors.joining(ConstVariable.COMMA));
     }
 
     public void validateName() throws FrontSpaceException, SameNameException {
         if (cars.stream()
-                .anyMatch(car -> condition.isMoreThanFiveLetters(car.getName()))) {
+                .anyMatch(car -> Condition.isMoreThanFiveLetters(car.getName()))) {
             throw new IllegalArgumentException();
         }
         if (cars.stream()
-                .anyMatch(car -> condition.isFrontSpace(car.getName()))) {
+                .anyMatch(car -> Condition.isFrontSpace(car.getName()))) {
             throw new FrontSpaceException();
         }
-        if (condition.isSameName(cars)) {
+        if (isSameName(cars)) {
             throw new SameNameException();
         }
+    }
+
+    private boolean isSameName(List<Car> cars) {
+        return Condition.isSameString(cars.stream().map(Car::getName).toList());
     }
 }

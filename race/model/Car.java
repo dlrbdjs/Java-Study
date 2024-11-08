@@ -1,8 +1,7 @@
 package race.model;
 
 import race.common.util.Condition;
-
-import static race.common.util.ConstVariable.INIT_DISTANCE;
+import race.common.util.ConstVariable;
 
 public class Car {
 
@@ -12,7 +11,7 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
-        this.distance = INIT_DISTANCE;
+        this.distance = ConstVariable.INIT_DISTANCE;
         this.moveCondition = false;
     }
 
@@ -20,8 +19,8 @@ public class Car {
         return name;
     }
 
-    public int getDistance() {
-        return distance;
+    public String getDistance() {
+        return ConstVariable.DISTANCE_HYPHEN.repeat(distance);
     }
 
     public void carMove() {
@@ -36,7 +35,6 @@ public class Car {
     }
 
     public void setMoveCondition() {
-        Condition condition = new Condition();
-        this.moveCondition = condition.isBiggerThanFour();
+        this.moveCondition = Condition.isBiggerThanFour();
     }
 }
