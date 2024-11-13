@@ -15,19 +15,17 @@ public class Game {
     public void playGame() {
 
         Message.START_GAME.print();
-        numbers.initRandomNumbers();
-        while(!(result.status.gameStatus.equals("stop"))) {
-            if((result.status.gameStatus.equals("continue"))){
+
+        while (result.status.getGameStatus()) {
+            if (result.status.getGenerateNumberStatus()) {
                 numbers.initRandomNumbers();
-                result.status.initGameStatus();
+                result.status.initGenerateNumberStatus();
             }
             numbers.initUserNums(userInput.inputUserNumbers());
-            System.out.println(numbers.getRandomNumbers());
-            System.out.println(numbers.getUserNumbers());
             count.setStrikeCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
             count.setBallCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
-//            count.getStrikeBallCnt(numbers.getRandomNumbers(), numbers.getUserNumbers());
             result.gameResult(count.getStrikeCount(), count.getBallCount());
+
             count.initCount();
         }
     }

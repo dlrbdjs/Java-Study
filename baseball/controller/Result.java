@@ -13,11 +13,11 @@ public class Result {
             Message.NOTHING.print();
         }
 
-        if(ball != 0){
+        if (ball != 0) {
             Message.BALL.print(ball);
         }
 
-        if(strike != 0){
+        if (strike != 0) {
             Message.STRIKE.print(strike);
         }
 
@@ -28,7 +28,7 @@ public class Result {
             Message.END_GAME.println();
             Message.RESTART_GAME.println();
 
-            status.changeStatus(userInput.inputUserNum());
+            status.setGameStatus(userInput.inputUserNum());
         }
     }
 }
