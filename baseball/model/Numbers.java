@@ -1,29 +1,52 @@
-//import java.util.Arrays;
 package baseball.model;
 
-import java.util.Random;
 import baseball.common.util.ConstVariable;
-import baseball.controller.UserInput;
+import baseball.common.util.RandomNumber;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Numbers {
-    public int[] userNums = new int[ConstVariable.maxNumListLength];
-    public int[] randomNums = new int[ConstVariable.maxNumListLength];
+    private List<Integer> userNumbers;
+    private List<Integer> randomNumbers;
+    private List<Integer> singleDigits;
 
-    public void getRandNums() {
-        Random random = new Random();
-        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int i = 0; i < ConstVariable.maxNumListLength; i++) {
-            int idx = random.nextInt(ConstVariable.randomNumBound);
-            while(nums[idx] == 0){
-                idx = idx * 2 % nums.length;
-            }
-            randomNums[i] = nums[idx];
-            nums[idx] = 0;
+    public Numbers() {
+        initSingleDigits();
+    }
+
+    public List<Integer> getRandomNumbers() {
+        return randomNumbers;
+    }
+
+    public List<Integer> getUserNumbers() {
+        return userNumbers;
+    }
+
+    public void getSingleDigit(int idx) {
+        addRandomNumbers(singleDigits.get(idx % singleDigits.size()));
+        singleDigits.remove(idx % singleDigits.size());
+    }
+
+    public void initUserNums(String inputNums) {
+        userNumbers = new ArrayList<>();
+        IntStream.range(0, inputNums.length())
+                .forEach(idx -> userNumbers.add(Character.getNumericValue(inputNums.charAt(idx))));
+    }
+
+    public void initRandomNumbers() {
+        randomNumbers = new ArrayList<>();
+        for (int i = 0; i < ConstVariable.MAX_NUM_LIST_LENGTH; i++) {
+            getSingleDigit(RandomNumber.getRandomNumber());
         }
     }
 
-    public void getUserNums() {
-        UserInput userInput = new UserInput();
-        userNums = userInput.inputUserNums();
+    public void initSingleDigits() {
+        this.singleDigits = ConstVariable.SINGLE_DIGITS;
+    }
+
+    public void addRandomNumbers(int randomNumber) {
+        this.randomNumbers.add(randomNumber);
     }
 }
