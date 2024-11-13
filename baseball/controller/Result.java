@@ -2,6 +2,7 @@ package baseball.controller;
 
 import baseball.view.Message;
 import baseball.model.Status;
+import baseball.view.UserInput;
 
 public class Result {
 

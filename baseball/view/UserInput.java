@@ -1,8 +1,6 @@
-package baseball.controller;
+package baseball.view;
 
 import java.util.Scanner;
-
-import baseball.view.Message;
 
 public class UserInput {
     Scanner sc = new Scanner(System.in);
