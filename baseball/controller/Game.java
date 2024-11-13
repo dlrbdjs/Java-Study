@@ -24,8 +24,11 @@ public class Game {
             numbers.initUserNums(userInput.inputUserNumbers());
             System.out.println(numbers.getRandomNumbers());
             System.out.println(numbers.getUserNumbers());
-            count.getStrikeBallCnt(numbers.getRandomNumbers(), numbers.getUserNumbers());
-            result.gameResult(count.strikeCnt, count.ballCnt);
+            count.setStrikeCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
+            count.setBallCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
+//            count.getStrikeBallCnt(numbers.getRandomNumbers(), numbers.getUserNumbers());
+            result.gameResult(count.getStrikeCount(), count.getBallCount());
+            count.initCount();
         }
     }
 }
