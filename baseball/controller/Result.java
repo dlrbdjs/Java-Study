@@ -1,5 +1,6 @@
 package baseball.controller;
 
+import baseball.common.util.Condition;
 import baseball.view.Message;
 import baseball.model.Status;
 import baseball.view.UserInput;
@@ -8,20 +9,20 @@ public class Result {
 
     Status status = new Status();
 
-    public void gameResult(int strike, int ball) {
-        if (strike == 0 && ball == 0) {
+    public void gameResult(int strikeCount, int ballCount) {
+        if (Condition.isZero(strikeCount) && Condition.isZero(ballCount)) {
             Message.NOTHING.print();
         }
 
-        if (ball != 0) {
-            Message.BALL.print(ball);
+        if (!Condition.isZero(ballCount)) {
+            Message.BALL.print(ballCount);
         }
 
-        if (strike != 0) {
-            Message.STRIKE.print(strike);
+        if (!Condition.isZero(strikeCount)) {
+            Message.STRIKE.print(strikeCount);
         }
 
-        if (strike == 3) {
+        if (Condition.isThree(strikeCount)) {
             UserInput userInput = new UserInput();
 
             System.out.println();
