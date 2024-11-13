@@ -16,8 +16,8 @@ public class Count {
     }
 
     public void initCount() {
-        strikeCount = 0;
-        ballCount = 0;
+        strikeCount = ConstVariable.INIT_STRIKE_COUNT;
+        ballCount = ConstVariable.INIT_BALL_COUNT;
     }
 
     public int getBallCount() {
