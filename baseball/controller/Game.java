@@ -18,10 +18,10 @@ public class Game {
 
         while (result.status.getGameStatus()) {
             if (result.status.getGenerateNumberStatus()) {
-                numbers.initRandomNumbers();
+                numbers.setRandomNumbers();
                 result.status.initGenerateNumberStatus();
             }
-            numbers.initUserNums(userInput.inputUserNumbers());
+            numbers.setUserNumbers(userInput.inputUserNumbers());
             count.setStrikeCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
             count.setBallCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
             result.gameResult(count.getStrikeCount(), count.getBallCount());

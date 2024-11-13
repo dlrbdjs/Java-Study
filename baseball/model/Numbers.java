@@ -29,13 +29,13 @@ public class Numbers {
         singleDigits.remove(idx % singleDigits.size());
     }
 
-    public void initUserNums(String inputNums) {
+    public void setUserNumbers(String inputNums) {
         userNumbers = new ArrayList<>();
         IntStream.range(0, inputNums.length())
                 .forEach(idx -> userNumbers.add(Character.getNumericValue(inputNums.charAt(idx))));
     }
 
-    public void initRandomNumbers() {
+    public void setRandomNumbers() {
         randomNumbers = new ArrayList<>();
         for (int i = 0; i < ConstVariable.MAX_NUM_LIST_LENGTH; i++) {
             getSingleDigit(RandomNumber.getRandomNumber());

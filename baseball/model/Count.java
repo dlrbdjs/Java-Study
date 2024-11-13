@@ -31,13 +31,13 @@ public class Count {
     public void setStrikeCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
         IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
                 .filter(idx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(idx)))
-                .forEach(i -> strikeCount++);
+                .forEach(_ -> strikeCount++);
     }
 
     public void setBallCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
         IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                .filter(jdx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(jdx)) && (jdx != idx))
-                .forEach(i -> ballCount++));
+                    .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
+                    .filter(jdx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(jdx)) && !Condition.isSameNumber(jdx, idx))
+                    .forEach(_ -> ballCount++));
     }
 }
