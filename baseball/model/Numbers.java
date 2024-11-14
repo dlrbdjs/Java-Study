@@ -43,22 +43,23 @@ public class Numbers {
         for (int i = 0; i < ConstVariable.MAX_NUM_LIST_LENGTH; i++) {
             getSingleDigit(RandomNumber.getRandomNumber());
         }
+        initSingleDigits();
     }
 
     public void initSingleDigits() {
-        this.singleDigits = ConstVariable.SINGLE_DIGITS;
+        this.singleDigits = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
     }
 
     public void addRandomNumbers(int randomNumber) {
         this.randomNumbers.add(randomNumber);
     }
 
-    public void validateUserInputLength (String inputNumbers){
+    private void validateUserInputLength (String inputNumbers){
         if(!Condition.isMaxLength(inputNumbers)){
             throw new IndexOutOfBoundsException();
         }
     }
-    public void validateUserNumbers (List<Integer> userNumbers){
+    private void validateUserNumbers (List<Integer> userNumbers){
         if(!Condition.isDistinctThreeDigits(userNumbers)){
             throw new IllegalArgumentException();
         }
