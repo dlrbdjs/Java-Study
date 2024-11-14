@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 import baseball.common.util.RandomNumber;
 
@@ -30,9 +31,11 @@ public class Numbers {
     }
 
     public void setUserNumbers(String inputNums) {
+        validateUserInputLength(inputNums);
         userNumbers = new ArrayList<>();
         IntStream.range(0, inputNums.length())
-                .forEach(idx -> userNumbers.add(Character.getNumericValue(inputNums.charAt(idx))));
+                .forEach(idx -> userNumbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
+        validateUserNumbers(userNumbers);
     }
 
     public void setRandomNumbers() {
@@ -48,5 +51,16 @@ public class Numbers {
 
     public void addRandomNumbers(int randomNumber) {
         this.randomNumbers.add(randomNumber);
+    }
+
+    public void validateUserInputLength (String inputNumbers){
+        if(!Condition.isMaxLength(inputNumbers)){
+            throw new IndexOutOfBoundsException();
+        }
+    }
+    public void validateUserNumbers (List<Integer> userNumbers){
+        if(!Condition.isDistinctThreeDigits(userNumbers)){
+            throw new IllegalArgumentException();
+        }
     }
 }
