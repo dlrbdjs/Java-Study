@@ -46,14 +46,14 @@ public class Numbers {
         this.numbers = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
     }
 
-    private void validateUserInputLength (String inputNumbers){
-        if(!Condition.isMaxLength(inputNumbers)){
+    private void validateUserInputLength(String inputNumbers) {
+        if (!Condition.isMaxLength(inputNumbers)) {
             throw new IndexOutOfBoundsException();
         }
     }
 
-    private void validateUserNumbers (List<Integer> numbers){
-        if(!Condition.isDistinctThreeDigits(numbers)){
+    private void validateUserNumbers(List<Integer> numbers) {
+        if (!Condition.isDistinctThreeDigits(numbers)) {
             throw new IllegalArgumentException();
         }
     }
