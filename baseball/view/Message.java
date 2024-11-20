@@ -19,7 +19,7 @@ public enum Message {
         System.out.print(this.message);
     }
 
-    public void print(int num){
+    public void print(int num) {
         System.out.print(num);
         this.print();
     }

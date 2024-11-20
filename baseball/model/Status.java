@@ -1,17 +1,37 @@
 package baseball.model;
 
-public class Status {
-    public String gameStatus = "";
+import baseball.common.util.ConstVariable;
 
-    public void changeStatus(int input){
-        if(input == 1) {
-            gameStatus = "continue";
-        } else if (input == 2) {
-            gameStatus = "stop";
+public class Status {
+    private boolean gameStatus;
+    private boolean generateNumberStatus;
+
+    public Status() {
+        initGameStatus();
+        this.generateNumberStatus = ConstVariable.GENERATE_NUMBERS_CONTINUE;
+    }
+
+    public void setGameStatus(int userInput) {
+        if (userInput == ConstVariable.USER_INPUT_INTEGER_ONE) {
+            this.generateNumberStatus = ConstVariable.GENERATE_NUMBERS_CONTINUE;
+        } else if (userInput == ConstVariable.USER_INPUT_INTEGER_TWO) {
+            this.gameStatus = ConstVariable.GAME_STOP;
         }
     }
 
-    public void initGameStatus(){
-        gameStatus = "";
+    public boolean getGameStatus() {
+        return gameStatus;
+    }
+
+    public boolean getGenerateNumberStatus() {
+        return generateNumberStatus;
+    }
+
+    public void initGameStatus() {
+        gameStatus = ConstVariable.GAME_CONTINUE;
+    }
+
+    public void initGenerateNumberStatus() {
+        generateNumberStatus = ConstVariable.GENERATE_NUMBERS_STOP;
     }
 }

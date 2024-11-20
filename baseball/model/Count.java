@@ -1,41 +1,43 @@
 package baseball.model;
 
+import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class Count {
 
-    public int strikeCnt;
-    public int ballCnt;
+    private int strikeCount;
+    private int ballCount;
 
-    public void getStrikeBallCnt(int[] rand, int[] user) {
-        strikeCnt = 0;
-        ballCnt = 0;
-        IntStream.range(0, ConstVariable.maxNumListLength)
-                .forEach(i -> IntStream.range(0, ConstVariable.maxNumListLength)
-                        .filter(j -> rand[i] == user[j])
-                        .findFirst()
-                        .ifPresent(j -> {
-                            if (i == j) {
-                                strikeCnt++;
-                            } else {
-                                ballCnt++;
-                            }
-                        }));
+    public Count() {
+        initCount();
+    }
 
-//        for (int i = 0; i < ConstVariable.maxNumListLength; i++) {
-//            for (int j = 0; j < ConstVariable.maxNumListLength; j++) {
-//                if(rand[i] == user[j]){
-//                    if (i == j){
-//                        strikeCnt++;
-//                    }
-//                    else {
-//                        ballCnt++;
-//                    }
-//                    break;
-//                }
-//            }
-//        }
+    public void initCount() {
+        strikeCount = ConstVariable.INIT_STRIKE_COUNT;
+        ballCount = ConstVariable.INIT_BALL_COUNT;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
+    public int getStrikeCount() {
+        return strikeCount;
+    }
+
+    public void setStrikeCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
+        IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
+                .filter(idx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(idx)))
+                .forEach(_ -> strikeCount++);
+    }
+
+    public void setBallCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
+        IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
+                    .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
+                    .filter(jdx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(jdx)) && !Condition.isSameNumber(jdx, idx))
+                    .forEach(_ -> ballCount++));
     }
 }
