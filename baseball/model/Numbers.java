@@ -25,7 +25,7 @@ public class Numbers {
         return digit;
     }
 
-    public void setUserNumbers(String inputNums) {
+    public void setNumbers(String inputNums) {
         validateUserInputLength(inputNums);
         numbers.clear();
         IntStream.range(0, inputNums.length())
@@ -33,7 +33,7 @@ public class Numbers {
         validateUserNumbers(numbers);
     }
 
-    public void setRandomNumbers() {
+    public void setNumbers() {
         Numbers singleDigits = new Numbers();
         singleDigits.initSingleDigits();
         numbers.clear();
