@@ -13,8 +13,7 @@ public class Result {
     Count count = new Count();
 
     public void baseBall(Numbers userNumbers, Numbers randomNumbers) {
-        count.setStrikeCount(userNumbers, randomNumbers);
-        count.setBallCount(userNumbers, randomNumbers);
+        count.setCount(userNumbers, randomNumbers);
         baseBallResult(count.getStrikeCount(), count.getBallCount());
         count.initCount();
     }

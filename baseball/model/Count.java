@@ -27,16 +27,21 @@ public class Count {
         return strikeCount;
     }
 
-    public void setStrikeCount(Numbers userNumbers, Numbers RandomNumbers) {
+    public void setCount(Numbers userNumbers, Numbers randomNumbers) {
+        setStrikeCount(userNumbers, randomNumbers);
+        setBallCount(userNumbers, randomNumbers);
+    }
+
+    private void setStrikeCount(Numbers userNumbers, Numbers randomNumbers) {
         IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                .filter(idx -> Condition.isSameNumber(userNumbers.getNumbers().get(idx), RandomNumbers.getNumbers().get(idx)))
+                .filter(idx -> Condition.isSameNumber(userNumbers.getNumbers().get(idx), randomNumbers.getNumbers().get(idx)))
                 .forEach(_ -> strikeCount++);
     }
 
-    public void setBallCount(Numbers userNumbers, Numbers randomNumbers) {
+    private void setBallCount(Numbers userNumbers, Numbers randomNumbers) {
         IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                    .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                    .filter(jdx -> Condition.isSameNumber(userNumbers.getNumbers().get(idx), randomNumbers.getNumbers().get(jdx)) && !Condition.isSameNumber(jdx, idx))
-                    .forEach(_ -> ballCount++));
+                .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
+                        .filter(jdx -> Condition.isSameNumber(userNumbers.getNumbers().get(idx), randomNumbers.getNumbers().get(jdx)) && !Condition.isSameNumber(jdx, idx))
+                        .forEach(_ -> ballCount++));
     }
 }
