@@ -3,7 +3,6 @@ package baseball.model;
 import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class Count {
