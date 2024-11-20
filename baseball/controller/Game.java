@@ -8,7 +8,8 @@ import baseball.view.UserInput;
 
 public class Game {
 
-    Numbers numbers = new Numbers();
+    Numbers userNumbers = new Numbers();
+    Numbers randomNumbers = new Numbers();
     Count count = new Count();
     Result result = new Result();
     UserInput userInput = new UserInput();
