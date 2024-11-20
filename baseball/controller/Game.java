@@ -21,12 +21,12 @@ public class Game {
         try {
             while (result.status.getGameStatus()) {
                 if (result.status.getGenerateNumberStatus()) {
-                    numbers.setRandomNumbers();
+                    randomNumbers.setRandomNumbers();
                     result.status.initGenerateNumberStatus();
                 }
-                numbers.setUserNumbers(userInput.inputUserNumbers());
-                count.setStrikeCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
-                count.setBallCount(numbers.getUserNumbers(), numbers.getRandomNumbers());
+                userNumbers.setUserNumbers(userInput.inputUserNumbers());
+                count.setStrikeCount(userNumbers, randomNumbers);
+                count.setBallCount(userNumbers, randomNumbers);
                 result.gameResult(count.getStrikeCount(), count.getBallCount());
 
                 count.initCount();
