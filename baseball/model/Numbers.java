@@ -3,6 +3,7 @@ package baseball.model;
 import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 import baseball.common.util.RandomNumber;
+import baseball.view.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,19 @@ public class Numbers {
     }
 
     public void setNumbers(String inputNums) {
-        validateUserInputLength(inputNums);
-        numbers.clear();
-        IntStream.range(0, inputNums.length())
-                .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
-        validateUserNumbers(numbers);
+        try {
+            validateUserInputLength(inputNums);
+            numbers.clear();
+            IntStream.range(0, inputNums.length())
+                    .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
+            validateUserNumbers(numbers);
+        } catch (IndexOutOfBoundsException e) {
+            ErrorMessage.INPUT_ERROR_LENGTH.print();
+        } catch (NumberFormatException e) {
+            ErrorMessage.INPUT_ERROR_TYPE.print();
+        } catch (IllegalArgumentException e) {
+            ErrorMessage.INPUT_ERROR_SAME.print();
+        }
     }
 
     public void setNumbers() {

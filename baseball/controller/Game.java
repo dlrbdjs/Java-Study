@@ -15,19 +15,10 @@ public class Game {
     public void playGame() {
 
         Message.START_GAME.print();
-
-        try {
-            while (result.status.getGameStatus()) {
-                initGame();
-                userNumbers.setNumbers(userInput.inputUserNumbers());
-                result.baseBall(userNumbers, randomNumbers);
-            }
-        } catch (IndexOutOfBoundsException e) {
-            ErrorMessage.INPUT_ERROR_LENGTH.print();
-        } catch (NumberFormatException e) {
-            ErrorMessage.INPUT_ERROR_TYPE.print();
-        } catch (IllegalArgumentException e) {
-            ErrorMessage.INPUT_ERROR_SAME.print();
+        while (result.status.getGameStatus()) {
+            initGame();
+            userNumbers.setNumbers(userInput.inputUserNumbers());
+            result.baseBall(userNumbers, randomNumbers);
         }
     }
 
