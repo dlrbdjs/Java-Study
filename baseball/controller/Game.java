@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.model.Count;
 import baseball.model.Numbers;
 import baseball.view.Message;
 import baseball.view.ErrorMessage;
@@ -10,7 +9,6 @@ public class Game {
 
     Numbers userNumbers = new Numbers();
     Numbers randomNumbers = new Numbers();
-    Count count = new Count();
     Result result = new Result();
     UserInput userInput = new UserInput();
 
