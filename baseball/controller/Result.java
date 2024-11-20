@@ -9,7 +9,7 @@ public class Result {
 
     Status status = new Status();
 
-    public void gameResult(int strikeCount, int ballCount) {
+    public void baseBallResult(int strikeCount, int ballCount) {
         if (Condition.isZero(strikeCount) && Condition.isZero(ballCount)) {
             Message.NOTHING.print();
         }
