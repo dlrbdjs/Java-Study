@@ -20,17 +20,9 @@ public class Game {
 
         try {
             while (result.status.getGameStatus()) {
-                if (result.status.getGenerateNumberStatus()) {
-                    randomNumbers.setNumbers();
-                    result.status.initGenerateNumberStatus();
-                    System.out.println(randomNumbers.getNumbers());
-                }
+                initGame();
                 userNumbers.setNumbers(userInput.inputUserNumbers());
-                count.setStrikeCount(userNumbers, randomNumbers);
-                count.setBallCount(userNumbers, randomNumbers);
-                result.gameResult(count.getStrikeCount(), count.getBallCount());
-
-                count.initCount();
+                result.baseBall(userNumbers, randomNumbers);
             }
         } catch (IndexOutOfBoundsException e) {
             ErrorMessage.INPUT_ERROR_LENGTH.print();
@@ -39,6 +31,12 @@ public class Game {
         } catch (IllegalArgumentException e) {
             ErrorMessage.INPUT_ERROR_SAME.print();
         }
+    }
 
+    public void initGame(){
+        if (result.status.getGenerateNumberStatus()) {
+            randomNumbers.setNumbers();
+            result.status.initGenerateNumberStatus();
+        }
     }
 }
