@@ -29,16 +29,23 @@ public class Numbers {
     public void setNumbers(String inputNums) {
         try {
             validateUserInputLength(inputNums);
-            numbers.clear();
+        } catch (IndexOutOfBoundsException e) {
+            ErrorMessage.INPUT_ERROR_LENGTH.println();
+            throw new IndexOutOfBoundsException();
+        }
+        numbers.clear();
+        try {
             IntStream.range(0, inputNums.length())
                     .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
-            validateUserNumbers(numbers);
-        } catch (IndexOutOfBoundsException e) {
-            ErrorMessage.INPUT_ERROR_LENGTH.print();
         } catch (NumberFormatException e) {
-            ErrorMessage.INPUT_ERROR_TYPE.print();
+            ErrorMessage.INPUT_ERROR_TYPE.println();
+            throw new NumberFormatException();
+        }
+        try {
+            validateUserNumbers(numbers);
         } catch (IllegalArgumentException e) {
-            ErrorMessage.INPUT_ERROR_SAME.print();
+            ErrorMessage.INPUT_ERROR_SAME.println();
+            throw new IndexOutOfBoundsException();
         }
     }
 
