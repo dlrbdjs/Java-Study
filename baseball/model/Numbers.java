@@ -3,64 +3,66 @@ package baseball.model;
 import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 import baseball.common.util.RandomNumber;
+import baseball.view.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Numbers {
-    private List<Integer> userNumbers;
-    private List<Integer> randomNumbers;
-    private List<Integer> singleDigits;
+    private List<Integer> numbers;
 
     public Numbers() {
-        initSingleDigits();
+        this.numbers = new ArrayList<>();
     }
 
-    public List<Integer> getRandomNumbers() {
-        return randomNumbers;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
-    public List<Integer> getUserNumbers() {
-        return userNumbers;
+    private int getSingleDigit(int idx) {
+        int digit = numbers.get(idx % numbers.size());
+        numbers.remove(idx % numbers.size());
+        return digit;
     }
 
-    public void getSingleDigit(int idx) {
-        addRandomNumbers(singleDigits.get(idx % singleDigits.size()));
-        singleDigits.remove(idx % singleDigits.size());
-    }
-
-    public void setUserNumbers(String inputNums) {
-        validateUserInputLength(inputNums);
-        userNumbers = new ArrayList<>();
-        IntStream.range(0, inputNums.length())
-                .forEach(idx -> userNumbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
-        validateUserNumbers(userNumbers);
-    }
-
-    public void setRandomNumbers() {
-        randomNumbers = new ArrayList<>();
-        for (int i = 0; i < ConstVariable.MAX_NUM_LIST_LENGTH; i++) {
-            getSingleDigit(RandomNumber.getRandomNumber());
+    public void setNumbers(String inputNums) {
+        try {
+            validateUserInputLength(inputNums);
+            numbers.clear();
+            IntStream.range(0, inputNums.length())
+                    .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
+            validateUserNumbers(numbers);
+        } catch (IndexOutOfBoundsException e) {
+            ErrorMessage.INPUT_ERROR_LENGTH.print();
+        } catch (NumberFormatException e) {
+            ErrorMessage.INPUT_ERROR_TYPE.print();
+        } catch (IllegalArgumentException e) {
+            ErrorMessage.INPUT_ERROR_SAME.print();
         }
-        initSingleDigits();
+    }
+
+    public void setNumbers() {
+        Numbers singleDigits = new Numbers();
+        singleDigits.initSingleDigits();
+        numbers.clear();
+        for (int i = 0; i < ConstVariable.MAX_NUM_LIST_LENGTH; i++) {
+            numbers.add(singleDigits.getSingleDigit(RandomNumber.getRandomNumber()));
+        }
     }
 
     public void initSingleDigits() {
-        this.singleDigits = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
+        this.numbers = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
     }
 
-    public void addRandomNumbers(int randomNumber) {
-        this.randomNumbers.add(randomNumber);
-    }
-
-    private void validateUserInputLength (String inputNumbers){
-        if(!Condition.isMaxLength(inputNumbers)){
+    private void validateUserInputLength(String inputNumbers) {
+        if (!Condition.isMaxLength(inputNumbers)) {
             throw new IndexOutOfBoundsException();
         }
     }
-    private void validateUserNumbers (List<Integer> userNumbers){
-        if(!Condition.isDistinctThreeDigits(userNumbers)){
+
+    private void validateUserNumbers(List<Integer> numbers) {
+        if (!Condition.isDistinctThreeDigits(numbers)) {
             throw new IllegalArgumentException();
         }
     }

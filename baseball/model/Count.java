@@ -3,7 +3,6 @@ package baseball.model;
 import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class Count {
@@ -28,16 +27,21 @@ public class Count {
         return strikeCount;
     }
 
-    public void setStrikeCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
+    public void setCount(Numbers userNumbers, Numbers randomNumbers) {
+        setStrikeCount(userNumbers, randomNumbers);
+        setBallCount(userNumbers, randomNumbers);
+    }
+
+    private void setStrikeCount(Numbers userNumbers, Numbers randomNumbers) {
         IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                .filter(idx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(idx)))
+                .filter(idx -> Condition.isSameNumber(userNumbers.getNumbers().get(idx), randomNumbers.getNumbers().get(idx)))
                 .forEach(_ -> strikeCount++);
     }
 
-    public void setBallCount(List<Integer> userNumbers, List<Integer> randomNumbers) {
+    private void setBallCount(Numbers userNumbers, Numbers randomNumbers) {
         IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                    .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
-                    .filter(jdx -> Condition.isSameNumber(userNumbers.get(idx), randomNumbers.get(jdx)) && !Condition.isSameNumber(jdx, idx))
-                    .forEach(_ -> ballCount++));
+                .forEach(idx -> IntStream.range(0, ConstVariable.MAX_NUM_LIST_LENGTH)
+                        .filter(jdx -> Condition.isSameNumber(userNumbers.getNumbers().get(idx), randomNumbers.getNumbers().get(jdx)) && !Condition.isSameNumber(jdx, idx))
+                        .forEach(_ -> ballCount++));
     }
 }
