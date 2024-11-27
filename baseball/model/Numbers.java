@@ -27,26 +27,10 @@ public class Numbers {
     }
 
     public void setNumbers(String inputNums) {
-        try {
-            validateUserInputLength(inputNums);
-        } catch (IndexOutOfBoundsException e) {
-            ErrorMessage.INPUT_ERROR_LENGTH.println();
-            throw new IndexOutOfBoundsException();
-        }
+        checkUserInput(inputNums);
         numbers.clear();
-        try {
-            IntStream.range(0, inputNums.length())
-                    .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
-        } catch (NumberFormatException e) {
-            ErrorMessage.INPUT_ERROR_TYPE.println();
-            throw new NumberFormatException();
-        }
-        try {
-            validateUserNumbers(numbers);
-        } catch (IllegalArgumentException e) {
-            ErrorMessage.INPUT_ERROR_SAME.println();
-            throw new IndexOutOfBoundsException();
-        }
+        convertInputToNumber(inputNums);
+        checkUserNumbers(numbers);
     }
 
     public void setNumbers() {
@@ -60,6 +44,34 @@ public class Numbers {
 
     public void initSingleDigits() {
         this.numbers = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
+    }
+
+    private void checkUserInput(String inputNums){
+        try {
+            validateUserInputLength(inputNums);
+        } catch (IndexOutOfBoundsException e) {
+            ErrorMessage.INPUT_ERROR_LENGTH.println();
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private void convertInputToNumber(String inputNums){
+        try {
+            IntStream.range(0, inputNums.length())
+                    .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
+        } catch (NumberFormatException e) {
+            ErrorMessage.INPUT_ERROR_TYPE.println();
+            throw new NumberFormatException();
+        }
+    }
+
+    private void checkUserNumbers(List<Integer> numbers) {
+        try {
+            validateUserNumbers(numbers);
+        } catch (IllegalArgumentException e) {
+            ErrorMessage.INPUT_ERROR_SAME.println();
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     private void validateUserInputLength(String inputNumbers) {
