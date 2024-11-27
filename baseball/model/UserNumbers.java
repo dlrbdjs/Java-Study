@@ -20,7 +20,6 @@ public class UserNumbers extends Numbers{
             validateUserInputLength(inputNums);
         } catch (IndexOutOfBoundsException e) {
             ErrorMessage.INPUT_ERROR_LENGTH.println();
-            throw new IndexOutOfBoundsException();
         }
     }
 
@@ -30,7 +29,6 @@ public class UserNumbers extends Numbers{
                     .forEach(idx -> getNumbers().add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
         } catch (NumberFormatException e) {
             ErrorMessage.INPUT_ERROR_TYPE.println();
-            throw new NumberFormatException();
         }
     }
 
@@ -39,7 +37,6 @@ public class UserNumbers extends Numbers{
             validateUserNumbers(numbers);
         } catch (IllegalArgumentException e) {
             ErrorMessage.INPUT_ERROR_SAME.println();
-            throw new IndexOutOfBoundsException();
         }
     }
 
@@ -50,7 +47,7 @@ public class UserNumbers extends Numbers{
     }
 
     private void validateUserNumbers(List<Integer> numbers) {
-        if (!Condition.isDistinctThreeDigits(numbers)) {
+        if (!Condition.isDistinctDigits(numbers)) {
             throw new IllegalArgumentException();
         }
     }

@@ -19,7 +19,7 @@ public class Condition {
         return numbers.length() == ConstVariable.MAX_NUM_LIST_LENGTH;
     }
 
-    public static boolean isDistinctThreeDigits(List<Integer> numbers) {
-        return numbers.stream().distinct().count() == ConstVariable.MAX_NUM_LIST_LENGTH;
+    public static boolean isDistinctDigits(List<Integer> numbers) {
+        return numbers.stream().distinct().count() == numbers.size();
     }
 }
