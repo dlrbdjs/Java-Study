@@ -2,7 +2,6 @@ package baseball.controller;
 
 import baseball.model.Numbers;
 import baseball.view.Message;
-import baseball.view.ErrorMessage;
 import baseball.view.UserInput;
 
 public class Game {
