@@ -1,6 +1,5 @@
 package baseball.model;
 
-import baseball.common.util.Condition;
 import baseball.view.ErrorMessage;
 
 import java.util.List;
@@ -40,15 +39,4 @@ public class UserNumbers extends Numbers{
         }
     }
 
-    private void validateUserInputLength(String inputNumbers) {
-        if (!Condition.isMaxLength(inputNumbers)) {
-            throw new IndexOutOfBoundsException();
-        }
-    }
-
-    private void validateUserNumbers(List<Integer> numbers) {
-        if (!Condition.isDistinctDigits(numbers)) {
-            throw new IllegalArgumentException();
-        }
-    }
 }

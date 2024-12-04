@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 import baseball.common.util.RandomNumber;
 
@@ -34,5 +35,17 @@ public class Numbers {
 
     public void initSingleDigits() {
         this.numbers = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
+    }
+
+    protected void validateUserInputLength(String inputNumbers) {
+        if (!Condition.isMaxLength(inputNumbers)) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    protected void validateUserNumbers(List<Integer> numbers) {
+        if (!Condition.isDistinctDigits(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
