@@ -3,11 +3,9 @@ package baseball.model;
 import baseball.common.util.Condition;
 import baseball.common.util.ConstVariable;
 import baseball.common.util.RandomNumber;
-import baseball.view.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Numbers {
     private List<Integer> numbers;
@@ -26,22 +24,6 @@ public class Numbers {
         return digit;
     }
 
-    public void setNumbers(String inputNums) {
-        try {
-            validateUserInputLength(inputNums);
-            numbers.clear();
-            IntStream.range(0, inputNums.length())
-                    .forEach(idx -> numbers.add(Integer.parseInt(String.valueOf(inputNums.charAt(idx)))));
-            validateUserNumbers(numbers);
-        } catch (IndexOutOfBoundsException e) {
-            ErrorMessage.INPUT_ERROR_LENGTH.print();
-        } catch (NumberFormatException e) {
-            ErrorMessage.INPUT_ERROR_TYPE.print();
-        } catch (IllegalArgumentException e) {
-            ErrorMessage.INPUT_ERROR_SAME.print();
-        }
-    }
-
     public void setNumbers() {
         Numbers singleDigits = new Numbers();
         singleDigits.initSingleDigits();
@@ -55,14 +37,14 @@ public class Numbers {
         this.numbers = new ArrayList<>(ConstVariable.SINGLE_DIGITS);
     }
 
-    private void validateUserInputLength(String inputNumbers) {
+    protected void validateUserInputLength(String inputNumbers) {
         if (!Condition.isMaxLength(inputNumbers)) {
             throw new IndexOutOfBoundsException();
         }
     }
 
-    private void validateUserNumbers(List<Integer> numbers) {
-        if (!Condition.isDistinctThreeDigits(numbers)) {
+    protected void validateUserNumbers(List<Integer> numbers) {
+        if (!Condition.isDistinctDigits(numbers)) {
             throw new IllegalArgumentException();
         }
     }

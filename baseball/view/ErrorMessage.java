@@ -12,7 +12,7 @@ public enum  ErrorMessage {
         this.errorMessage = errorMessage;
     }
 
-    public void print() {
-        System.out.print(this.errorMessage);
+    public void println() {
+        System.out.println(this.errorMessage);
     }
 }

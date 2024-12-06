@@ -1,13 +1,13 @@
 package baseball.controller;
 
 import baseball.model.Numbers;
+import baseball.model.UserNumbers;
 import baseball.view.Message;
-import baseball.view.ErrorMessage;
 import baseball.view.UserInput;
 
 public class Game {
 
-    Numbers userNumbers = new Numbers();
+    UserNumbers userNumbers = new UserNumbers();
     Numbers randomNumbers = new Numbers();
     Result result = new Result();
     UserInput userInput = new UserInput();
